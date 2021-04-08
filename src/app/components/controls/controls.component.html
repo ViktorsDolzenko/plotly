@@ -1,0 +1,41 @@
+<div class="form">
+  <div>
+<mat-form-field appearance="fill">
+  <mat-label>Select graph</mat-label>
+  <mat-select (selectionChange)="changeType($event.value)">
+    <mat-option *ngFor="let option of options" [value]="option.value">
+      {{option.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+  </div>
+
+  <div>
+ <mat-form-field appearance="fill">
+   <mat-label>Title</mat-label>
+   <input type="text" matInput placeholder="Enter Title" [(ngModel)]="title">
+ </mat-form-field>
+  </div>
+
+<div class="ranges">
+  <mat-form-field appearance="fill">
+    <input type="text" matInput placeholder="min value" [(ngModel)]="minValue">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <input type="text" matInput placeholder="max value" [(ngModel)]="maxValue">
+  </mat-form-field>
+</div>
+
+  <div>
+    <mat-button-toggle-group [(ngModel)]="selectedToggle">
+      <mat-button-toggle value="linear">Linear</mat-button-toggle>
+      <mat-button-toggle value="log">Log</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+</div>
+
+<div>
+  <app-visualization [title]="title" [maxValue]="maxValue" [minValue]="minValue" [typeOfToggle]="selectedToggle"></app-visualization>
+</div>
+
