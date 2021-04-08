@@ -1,6 +1,7 @@
 import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {select, Store} from '@ngrx/store';
 import {State} from '../../../store/reducers/controlReducer';
+import {getSelectedOption} from '../../../store/selectors/selectors';
 
 
 @Component({
@@ -24,7 +25,7 @@ export class VisualizationComponent implements OnChanges, OnInit{
   }
 
   ngOnInit() {
-    this.store.pipe(select(state => state.selectedOption)).subscribe(type => {this.type = type; this.getGraph(); } );
+    this.store.pipe(select(getSelectedOption)).subscribe(type => {console.log(this.getGraph(), type); } );
   }
 
   ngOnChanges() {
